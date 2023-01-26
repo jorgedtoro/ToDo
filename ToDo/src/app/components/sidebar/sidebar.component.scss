@@ -1,0 +1,59 @@
+
+@import '../../../assets/styles/variables';
+
+.sidebar{
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: $sidebar-background;
+    padding: 1rem;
+    color:$white;
+    
+    &-user{
+        display: flex;
+        align-items: center;
+        gap:1rem;
+        padding: 1rem;
+    }
+    &-search{
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        background-color: $white;
+        &-input{
+            border:none;
+        }
+        i{
+            color:black,
+        }
+        
+    }
+    &-menu{
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        &-item{
+            display: flex;
+            align-items: center;
+            gap:1rem,
+        }
+    }
+    &-lists{
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        &-list{
+            display: flex;
+            align-items: center;
+            gap:1rem;
+
+        }
+        
+    }
+    &-newList{
+        display: flex;
+        align-items: center;
+        gap:1rem;
+        padding: 1rem;
+
+    }
+
+}
