@@ -1,0 +1,65 @@
+@import '../../../assets/styles/common/common_dir';
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding: 2rem;
+    font-family: $main-font;
+
+    &-header {
+        margin: 2rem 0;
+
+    }
+
+    &-form {
+        margin-bottom: 2rem;
+        .form {
+
+            &-mail,
+            &-pass {
+                display: flex;
+                gap: 1rem;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem;
+
+                input {
+                    padding: 0.5rem;
+                    border-radius: 0.5rem;
+                    border: 1px solid lightblue;
+                }
+            }
+
+            &-buttons {
+                display: flex;
+                justify-content: center;
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+                &-login {
+                    background-color: $sidebar-background;
+                    width: 60%;
+                }
+            }
+            
+        }
+    }
+        &-google {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            &-title{
+                align-self: center;
+                width: 70%;
+                text-align: center;
+            }
+            &-btn {
+                margin-top: 1rem;
+                align-self: center;
+                background-color: $sidebar-background;
+                width: 30%;
+            }
+        }
+}

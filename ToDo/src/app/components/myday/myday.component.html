@@ -1,0 +1,36 @@
+<div class="container">
+  <app-sidebar></app-sidebar>
+  <div class="rows-wrapper">
+    <div class="rows-wrapper-rowone">
+      <div class="row-info">
+        <h2>My Day</h2>
+        <p>Friday, 27 January</p>
+      </div>
+      <div class="row-icons">
+        <button class="row-icons-btn btn" (click)="logOut()">Log Out</button>
+        <i class="fa-regular fa-lightbulb"></i>
+        <i class="fa-solid fa-ellipsis"></i>
+      </div>
+    </div>
+    <div class="rows-wrapper-rowtwo">
+      <article class="task-wrapper">
+        <div class="task-wrapper-input">
+          <i class="fa-regular fa-circle-check"></i>
+        </div>
+        <div class="task-wrapper-body">
+          <p>new task</p>
+          <p>category</p>
+        </div>
+        <div class="task-wrapper-favourite">
+          <i class="fa-regular fa-star"></i>
+        </div>
+      </article>
+      <article class="add-task">
+        <div class="add-task-icon">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <input type="text" class="add-task-input" placeholder="Add a Task" />
+      </article>
+    </div>
+  </div>
+</div>

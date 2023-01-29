@@ -1,0 +1,36 @@
+@import '../../../assets/styles/common/common_dir';
+
+.container{
+    font-family: $main-font;
+    display: flex;
+    .row-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 2rem;
+        .rowone{
+            margin-bottom: 2rem;
+            text-align: center;
+            &-title{
+                margin-bottom: 1rem;
+            }
+            &-info{
+                color:grey;
+            }
+        }
+        .rowtwo{
+            display: flex;
+            gap:2rem;
+            align-items: center;
+
+            &-signUp{
+                background-color: grey;
+            }
+            &-login{
+                background-color: $sidebar-background;
+            }
+        }
+        
+    }
+}

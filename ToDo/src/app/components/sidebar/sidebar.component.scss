@@ -1,12 +1,17 @@
 
-@import '../../../assets/styles/variables';
+@import '../../../assets/styles/common/common_dir';
 
 .sidebar{
     font-family: 'Source Sans Pro', sans-serif;
     background-color: $sidebar-background;
     padding: 1rem;
     color:$white;
-    
+    height: 100vh;
+    .wrapper-menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
     &-user{
         display: flex;
         align-items: center;
@@ -16,12 +21,17 @@
     &-search{
         display: flex;
         justify-content: space-between;
-        padding: 1rem;
+        padding: 0.5rem;
         background-color: $white;
+        border-radius: 6px;
         &-input{
+            flex-basis: 80%;
             border:none;
+            background-color: $white;
+            padding: 0.5rem;
         }
         i{
+            padding: 0.5rem;
             color:black,
         }
         
