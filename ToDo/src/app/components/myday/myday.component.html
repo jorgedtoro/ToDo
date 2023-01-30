@@ -13,41 +13,45 @@
       </div>
     </div>
     <div class="rows-wrapper-rowtwo">
-      <article class="task-wrapper">
-        <div class="task-wrapper-input">
-          <i class="fa-regular fa-circle-check"></i>
-        </div>
-        <div class="task-wrapper-body">
-          <p>new task</p>
-          <p>category</p>
-        </div>
-        <div class="task-wrapper-favourite">
-          <i class="fa-regular fa-star"></i>
-        </div>
-      </article>
-      <article>
-        <form class="add-task" [formGroup]="formTodo" (ngSubmit)="addTodo()">
-          <div class="add-task-icon">
-            <button class="add-task-btn" type="submit">
-              <i class="fa-solid fa-plus"></i>
-            </button>
+      <div class="rowtwo-todos">
+        <article class="task-wrapper" *ngFor="let todo of arrTodos">
+          <div class="task-wrapper-input">
+            <i class="fa-regular fa-circle-check"></i>
           </div>
-          <input
-            type="text"
-            class="add-task-input"
-            name="title"
-            formControlName="title"
-            placeholder="Add a Task"
-          />
-          <input
-            type="text"
-            class="add-task-input"
-            name="category"
-            formControlName="category"
-            placeholder="Add a category"
-          />
-        </form>
-      </article>
+          <div class="task-wrapper-body">
+            <p>{{ todo.title }}</p>
+            <p>{{ todo.category }}</p>
+          </div>
+          <div class="task-wrapper-favourite">
+            <i class="fa-regular fa-star"></i>
+          </div>
+        </article>
+      </div>
+      <div class="rowtwo-addTodos">
+        <article class="task">
+          <form class="add-task" [formGroup]="formTodo" (ngSubmit)="addTodo()">
+            <div class="add-task-icon">
+              <button class="add-task-btn" type="submit">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+            <input
+              type="text"
+              class="add-task-input"
+              name="title"
+              formControlName="title"
+              placeholder="Add a Task"
+            />
+            <input
+              type="text"
+              class="add-task-input"
+              name="category"
+              formControlName="category"
+              placeholder="Add a category"
+            />
+          </form>
+        </article>
+      </div>
     </div>
   </div>
 </div>

@@ -11,6 +11,7 @@ import { TodoService } from 'src/app/services/todo.service';
 })
 export class MydayComponent implements OnInit {
   formTodo: FormGroup;
+  arrTodos: Todo[] = [];
   // status: boolean = false;
 
   constructor(private todoService: TodoService, private router: Router) {
@@ -22,7 +23,8 @@ export class MydayComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoService.getTodos().subscribe((todos) => {
-      console.log(todos);
+      this.arrTodos = todos;
+      console.log(this.arrTodos);
     });
   }
   async logOut() {
@@ -36,7 +38,18 @@ export class MydayComponent implements OnInit {
       category: this.formTodo.value.category,
       status: false,
     };
-    const response = await this.todoService.addTodo(newTodo);
-    console.log(response);
+    try {
+      const response = await this.todoService.addTodo(newTodo);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async getAllTodos() {
+    try {
+      const response = await this.todoService.getTodos();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

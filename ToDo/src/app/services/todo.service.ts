@@ -44,15 +44,19 @@ export class TodoService {
   //storage
   async getImages() {
     const imagesRef = ref(this.storage, 'images');
+    try {
+      const allImages = await listAll(imagesRef);
 
-    const allImages = await listAll(imagesRef);
+      allImages.items.forEach(async (item) => {
+        const url = await getDownloadURL(item);
+        const name = await item.name;
 
-    allImages.items.forEach(async (item) => {
-      const url = await getDownloadURL(item);
-      const name = await item.name;
+        this.images.push({ url: url, name: name });
+      });
+    } catch (error) {
+      console.log(error);
+    }
 
-      this.images.push({ url: url, name: name });
-    });
     return this.images;
   }
 
