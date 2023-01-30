@@ -25,11 +25,28 @@
           <i class="fa-regular fa-star"></i>
         </div>
       </article>
-      <article class="add-task">
-        <div class="add-task-icon">
-          <i class="fa-solid fa-plus"></i>
-        </div>
-        <input type="text" class="add-task-input" placeholder="Add a Task" />
+      <article>
+        <form class="add-task" [formGroup]="formTodo" (ngSubmit)="addTodo()">
+          <div class="add-task-icon">
+            <button class="add-task-btn" type="submit">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          <input
+            type="text"
+            class="add-task-input"
+            name="title"
+            formControlName="title"
+            placeholder="Add a Task"
+          />
+          <input
+            type="text"
+            class="add-task-input"
+            name="category"
+            formControlName="category"
+            placeholder="Add a category"
+          />
+        </form>
       </article>
     </div>
   </div>

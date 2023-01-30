@@ -7,61 +7,83 @@
     padding: 1rem;
     color:$white;
     height: 100vh;
-    .wrapper-menu{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    &-user{
-        display: flex;
-        align-items: center;
-        gap:1rem;
-        padding: 1rem;
-    }
-    &-search{
-        display: flex;
-        justify-content: space-between;
-        padding: 0.5rem;
-        background-color: $white;
-        border-radius: 6px;
-        &-input{
-            flex-basis: 80%;
-            border:none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &-menu-wrapper{
+    
+        .sidebar-user{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            &-image {
+                img {
+                    max-width: 100%;
+                    border-radius: 50%;
+                }
+            }
+        }
+        
+        .sidebar-search {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem;
             background-color: $white;
-            padding: 0.5rem;
-        }
-        i{
-            padding: 0.5rem;
-            color:black,
-        }
-        
-    }
-    &-menu{
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        &-item{
-            display: flex;
-            align-items: center;
-            gap:1rem,
-        }
-    }
-    &-lists{
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        &-list{
-            display: flex;
-            align-items: center;
-            gap:1rem;
+            border-radius: 6px;
 
+            &-input {
+                flex-basis: 80%;
+                border: none;
+                background-color: $white;
+                padding: 0.5rem;
+            }
+
+            i {
+                padding: 0.5rem;
+                color: black,
+            }
+        }
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            border-bottom: 1px solid $white;
+            &-item {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin: 0.5rem 0;
+                padding: 0.5rem;
+            }
+            &-item:hover{
+                background-color: $white;
+                color:$sidebar-background;
+                border-radius: 0.5rem;
+                cursor: pointer;
+
+            }
         }
         
+        .sidebar-lists {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            
+            &-list {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin: 1rem 0;
+
+            }
+
+        }  
     }
-    &-newList{
+    .sidebar-newList {
         display: flex;
         align-items: center;
-        gap:1rem;
+        gap: 1rem;
         padding: 1rem;
 
     }
