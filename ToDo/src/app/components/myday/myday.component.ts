@@ -37,6 +37,8 @@ export class MydayComponent implements OnInit {
       title: this.formTodo.value.title,
       category: this.formTodo.value.category,
       status: false,
+      favourite: false,
+      list: 'Tareas',
     };
     try {
       const response = await this.todoService.addTodo(newTodo);
@@ -47,6 +49,15 @@ export class MydayComponent implements OnInit {
   async getAllTodos() {
     try {
       const response = await this.todoService.getTodos();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async deleteTodo(event: any) {
+    try {
+      const pId: string = event.target.id;
+      const response = await this.todoService.deleteTodo(pId);
       console.log(response);
     } catch (error) {
       console.log(error);

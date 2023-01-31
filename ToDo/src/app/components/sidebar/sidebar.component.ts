@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { List } from 'src/app/interfaces/list.interface';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -9,14 +10,25 @@ import { TodoService } from 'src/app/services/todo.service';
 export class SidebarComponent implements OnInit {
   // images: string[] = [];
   avatar: string = '';
+  listTitle: string = '';
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
-    this.getAvatar();
+    // this.getAvatar();
   }
 
-  async getAvatar() {
-    const images = await this.todoService.getImages();
-    console.log(images);
+  // async getAvatar() {
+  //   const images = await this.todoService.getImages();
+  // }
+
+  addList(title: string) {
+    this.listTitle = title;
+    console.log(this.listTitle);
+    // const newList: List = { title: 'hola' };
+    // try {
+    //   const response = await this.todoService.addList(newList);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 }

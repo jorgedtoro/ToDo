@@ -12,10 +12,13 @@ import {
   collection,
   addDoc,
   collectionData,
+  deleteDoc,
+  doc,
 } from '@angular/fire/firestore';
 import { Storage, ref, getDownloadURL, listAll } from '@angular/fire/storage';
 import { Todo } from '../interfaces/todo.interface';
 import { Observable } from 'rxjs';
+import { List } from '../interfaces/list.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -65,9 +68,16 @@ export class TodoService {
     const todoRef = collection(this.firestore, 'todos');
     return addDoc(todoRef, todo);
   }
-
+  addList(list: List) {
+    const listRef = collection(this.firestore, 'Lists');
+    return addDoc(listRef, list);
+  }
   getTodos(): Observable<Todo[]> {
     const todoRef = collection(this.firestore, 'todos');
     return collectionData(todoRef, { idField: 'id' }) as Observable<Todo[]>;
+  }
+  deleteTodo(pId: string) {
+    const todoDocRef = doc(this.firestore, `todos/${pId}`);
+    return deleteDoc(todoDocRef);
   }
 }

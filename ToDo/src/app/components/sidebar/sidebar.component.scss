@@ -85,7 +85,20 @@
         align-items: center;
         gap: 1rem;
         padding: 1rem;
-
+        &-btn{
+            border: none;
+            background-color: transparent;
+        }
+        &-input{
+            font-family: $main-font;
+            border: none;
+            background-color: transparent;
+            color: white;
+            outline: none;
+        }
+        &-input::placeholder {
+            color: rgba($color: $white, $alpha: 0.5)
+        }
     }
 
 }

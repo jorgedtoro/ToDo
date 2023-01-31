@@ -54,7 +54,12 @@
     </div>
   </div>
   <div class="sidebar-newList">
-    <i class="fa-solid fa-plus"></i>
-    <p>Nueva lista</p>
+    <i class="fa-solid fa-plus" (click)="addList(listTitle)"></i>
+    <input
+      type="text"
+      class="sidebar-newList-input"
+      placeholder="New List"
+      value="{{ listTitle }}"
+    />
   </div>
 </div>
