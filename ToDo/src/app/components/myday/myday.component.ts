@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { List } from 'src/app/interfaces/list.interface';
 import { Todo } from 'src/app/interfaces/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
 
@@ -12,6 +13,8 @@ import { TodoService } from 'src/app/services/todo.service';
 export class MydayComponent implements OnInit {
   formTodo: FormGroup;
   arrTodos: Todo[] = [];
+  arrLists: List[] = [];
+  modalList: boolean = false;
   // status: boolean = false;
 
   constructor(private todoService: TodoService, private router: Router) {
@@ -24,7 +27,11 @@ export class MydayComponent implements OnInit {
   ngOnInit(): void {
     this.todoService.getTodos().subscribe((todos) => {
       this.arrTodos = todos;
-      console.log(this.arrTodos);
+      // console.log(this.arrTodos);
+    });
+    this.todoService.getLists().subscribe((lists) => {
+      this.arrLists = lists;
+      // console.log(this.arrLists);
     });
   }
   async logOut() {
@@ -49,7 +56,7 @@ export class MydayComponent implements OnInit {
   async getAllTodos() {
     try {
       const response = await this.todoService.getTodos();
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +65,15 @@ export class MydayComponent implements OnInit {
     try {
       const pId: string = event.target.id;
       const response = await this.todoService.deleteTodo(pId);
-      console.log(response);
+      // console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getLists() {
+    try {
+      const response = this.todoService.getLists();
     } catch (error) {
       console.log(error);
     }

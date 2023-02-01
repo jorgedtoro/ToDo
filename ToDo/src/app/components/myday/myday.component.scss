@@ -114,9 +114,20 @@
                 &-icons{
                     color: $white;
                     display: flex;
-                    gap:1rem;
+                    gap:2rem;
+                    cursor:pointer,
                 }
+         
             }
+            .modalList{
+                display:none;
+                //TODO: add new styles background, border, you name it.
+            }
+            .show{
+                display: flex;
+                flex-direction: column;
+            }
+
         }
     }
 }

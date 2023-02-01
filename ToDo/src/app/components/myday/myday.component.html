@@ -66,6 +66,11 @@
             </div>
           </form>
         </article>
+        <div class="modalList" [ngClass]="{ show: modalList }">
+          <p *ngFor="let list of arrLists" id="{{ list.id }}">
+            {{ list.title }}
+          </p>
+        </div>
       </div>
     </div>
   </div>

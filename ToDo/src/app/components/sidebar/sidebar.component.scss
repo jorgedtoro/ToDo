@@ -73,8 +73,16 @@
             &-list {
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 gap: 1rem;
                 margin: 1rem 0;
+
+                &-info{
+                    display: flex;
+                    align-items: center;
+                    gap:1rem;
+                }
+                
 
             }
 
@@ -85,6 +93,7 @@
         align-items: center;
         gap: 1rem;
         padding: 1rem;
+        position: relative;
         &-btn{
             border: none;
             background-color: transparent;
@@ -101,4 +110,19 @@
         }
     }
 
+    .modalList{
+        display: none;
+        color:red;
+        background-color: $white;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        position: absolute;
+        &-trash {
+            display: flex;
+            gap: 1rem,
+        }
+    }
+    .show{
+        display: flex;
+    }
 }

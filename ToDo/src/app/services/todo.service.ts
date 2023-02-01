@@ -63,7 +63,7 @@ export class TodoService {
     return this.images;
   }
 
-  //CRUD todo firestore
+  //CRUD todo and List firestore
   addTodo(todo: Todo) {
     const todoRef = collection(this.firestore, 'todos');
     return addDoc(todoRef, todo);
@@ -76,8 +76,16 @@ export class TodoService {
     const todoRef = collection(this.firestore, 'todos');
     return collectionData(todoRef, { idField: 'id' }) as Observable<Todo[]>;
   }
+  getLists(): Observable<List[]> {
+    const listRef = collection(this.firestore, 'Lists');
+    return collectionData(listRef, { idField: 'id' }) as Observable<List[]>;
+  }
   deleteTodo(pId: string) {
     const todoDocRef = doc(this.firestore, `todos/${pId}`);
     return deleteDoc(todoDocRef);
+  }
+  deleteList(pId: string) {
+    const listDocRef = doc(this.firestore, `Lists/${pId}`);
+    return deleteDoc(listDocRef);
   }
 }

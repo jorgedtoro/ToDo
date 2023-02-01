@@ -43,14 +43,33 @@
       </div>
     </div>
     <div class="sidebar-lists">
-      <div class="sidebar-lists-list">
-        <i class="fa-solid fa-bars"></i>
-        <p>Proyectos Python</p>
+      <div
+        class="sidebar-lists-list"
+        *ngFor="let list of arrList"
+        (contextmenu)="showModallist($event)"
+      >
+        <div class="sidebar-lists-list-info">
+          <i class="fa-solid fa-bars"></i>
+          <p id="{{ list.id }}">{{ list.title }}</p>
+        </div>
+        <div class="sidebar-lists-list-trash">
+          <i
+            id="{{ list.id }}"
+            class="fa-solid fa-trash"
+            (click)="deleteList($event)"
+          ></i>
+        </div>
       </div>
-      <div class="sidebar-lists-list">
-        <i class="fa-solid fa-bars"></i>
-        <p>Pricing</p>
-      </div>
+    </div>
+  </div>
+  <div
+    class="modalList"
+    [ngClass]="{ show: modalList }"
+    [ngStyle]="{ left: left + 'px', top: right + 'px' }"
+  >
+    <div class="modalList-trash">
+      <i class="fa-solid fa-trash"></i>
+      <p class="modalList-trash-text">Delete list</p>
     </div>
   </div>
   <div class="sidebar-newList">
@@ -59,7 +78,7 @@
       type="text"
       class="sidebar-newList-input"
       placeholder="New List"
-      value="{{ listTitle }}"
+      [(ngModel)]="listTitle"
     />
   </div>
 </div>
