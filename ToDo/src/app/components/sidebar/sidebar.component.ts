@@ -1,4 +1,3 @@
-import { NgIfContext } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { List } from 'src/app/interfaces/list.interface';
 import { TodoService } from 'src/app/services/todo.service';
@@ -32,12 +31,12 @@ export class SidebarComponent implements OnInit {
 
   async addList(title: string) {
     this.listTitle = title;
-    console.log(this.listTitle);
-    // const newList: List = { title: 'hola' };
+    // console.log(this.listTitle);
     try {
       const response = await this.todoService.addList({
         title: this.listTitle,
       });
+      this.listTitle = '';
     } catch (error) {
       console.log(error);
     }
@@ -56,6 +55,10 @@ export class SidebarComponent implements OnInit {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  filterByCategory(title: string | any) {
+    console.log(title);
   }
 
   showModallist(event: any) {

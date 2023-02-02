@@ -47,6 +47,8 @@
         class="sidebar-lists-list"
         *ngFor="let list of arrList"
         (contextmenu)="showModallist($event)"
+        id="{{ list.id }}"
+        (click)="filterByCategory(list.title)"
       >
         <div class="sidebar-lists-list-info">
           <i class="fa-solid fa-bars"></i>

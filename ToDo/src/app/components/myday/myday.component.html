@@ -29,7 +29,12 @@
             </div>
           </div>
           <div class="task-wrapper-favourite">
-            <i class="fa-regular fa-star"></i>
+            <i
+              [ngClass]="{ 'fa-solid': fillactive, 'fa-regular': !fillactive }"
+              class="fa-regular fa-star"
+              id="{{ todo.id }}"
+              (click)="addTodoFavourite($event)"
+            ></i>
             <i
               class="fa-solid fa-trash"
               id="{{ todo.id }}"

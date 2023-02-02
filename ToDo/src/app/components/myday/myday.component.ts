@@ -15,6 +15,7 @@ export class MydayComponent implements OnInit {
   arrTodos: Todo[] = [];
   arrLists: List[] = [];
   modalList: boolean = false;
+  fillactive: boolean = false;
   // status: boolean = false;
 
   constructor(private todoService: TodoService, private router: Router) {
@@ -49,6 +50,8 @@ export class MydayComponent implements OnInit {
     };
     try {
       const response = await this.todoService.addTodo(newTodo);
+      //reset the forms values
+      this.formTodo.reset();
     } catch (error) {
       console.log(error);
     }
@@ -56,6 +59,26 @@ export class MydayComponent implements OnInit {
   async getAllTodos() {
     try {
       const response = await this.todoService.getTodos();
+      // console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async addTodoFavourite(event: any) {
+    const pId = event.target.id;
+    const favourite = true;
+    console.log(event);
+    const fillStart = document.querySelector('.fa-star');
+    // fillStart?.classList.remove('fa-regular');
+    // fillStart?.classList.remove('fa-star');
+    // fillStart?.classList.add('fa-solid');
+    // fillStart?.classList.add('fa-star');
+
+    // window.location.reload();
+    console.log(fillStart);
+    this.fillactive = !this.fillactive;
+    try {
+      const response = await this.todoService.updateTodo(pId, favourite);
       // console.log(response);
     } catch (error) {
       console.log(error);

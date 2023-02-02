@@ -14,6 +14,7 @@ import {
   collectionData,
   deleteDoc,
   doc,
+  updateDoc,
 } from '@angular/fire/firestore';
 import { Storage, ref, getDownloadURL, listAll } from '@angular/fire/storage';
 import { Todo } from '../interfaces/todo.interface';
@@ -87,5 +88,9 @@ export class TodoService {
   deleteList(pId: string) {
     const listDocRef = doc(this.firestore, `Lists/${pId}`);
     return deleteDoc(listDocRef);
+  }
+  updateTodo(pId: string, favourite: boolean) {
+    const todoDocRef = doc(this.firestore, `todos/${pId}`);
+    return updateDoc(todoDocRef, { favourite: favourite });
   }
 }

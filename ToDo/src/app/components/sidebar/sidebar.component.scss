@@ -83,7 +83,20 @@
                     gap:1rem;
                 }
                 
+                &-trash{
+                    cursor: pointer;
+                }
+                &-trash:hover{
+                    color:rgb(182, 8, 8);
+                }
+                
 
+            }
+            &-list:hover {
+                background-color: $white;
+                border-radius: 0.5rem;
+                padding: 0.5rem;
+                color:$sidebar-background;
             }
 
         }  
