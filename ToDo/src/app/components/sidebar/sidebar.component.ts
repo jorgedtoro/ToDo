@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { List } from 'src/app/interfaces/list.interface';
+import { Todo } from 'src/app/interfaces/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -11,10 +12,13 @@ export class SidebarComponent implements OnInit {
   // images: string[] = [];
   // avatar: string = '';
   listTitle: string = '';
+  listTitleEmit:string='Tareas';
+
   arrList: List[] = [];
   modalList: boolean = false;
   left: number = 0;
   right: number = 0;
+  arrTodos:Todo[]=[];
 
   constructor(private todoService: TodoService) {}
 
@@ -23,6 +27,11 @@ export class SidebarComponent implements OnInit {
       this.arrList = lists;
       // console.log(this.arrList);
     });
+    this.todoService.getTodos().subscribe(todos =>{
+      this.arrTodos=todos;
+      console.log(this.arrTodos)
+    })
+    
   }
 
   // async getAvatar() {
@@ -57,8 +66,13 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  filterByCategory(title: string | any) {
+  filterByCategory(title: string) {
     console.log(title);
+    console.log(this.arrTodos);
+    const arrTodosFilter = this.arrTodos.filter((todo)=>{
+      return todo.category == title;
+    });
+    return arrTodosFilter
   }
 
   showModallist(event: any) {

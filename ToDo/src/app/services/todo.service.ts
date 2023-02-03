@@ -26,6 +26,9 @@ import { List } from '../interfaces/list.interface';
 })
 export class TodoService {
   images: any[] = [];
+  arrTodos:Todo[]=[];
+  listTitle:string='';
+  
   constructor(
     private auth: Auth,
     private storage: Storage,
@@ -46,26 +49,26 @@ export class TodoService {
     return signOut(this.auth);
   }
   //storage
-  async getImages() {
-    const imagesRef = ref(this.storage, 'images');
-    try {
-      const allImages = await listAll(imagesRef);
+  // async getImages() {
+  //   const imagesRef = ref(this.storage, 'images');
+  //   try {
+  //     const allImages = await listAll(imagesRef);
 
-      allImages.items.forEach(async (item) => {
-        const url = await getDownloadURL(item);
-        const name = await item.name;
+  //     allImages.items.forEach(async (item) => {
+  //       const url = await getDownloadURL(item);
+  //       const name = await item.name;
 
-        this.images.push({ url: url, name: name });
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  //       this.images.push({ url: url, name: name });
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
 
-    return this.images;
-  }
+  //   return this.images;
+  // }
 
   //CRUD todo and List firestore
-  addTodo(todo: Todo) {
+  addTodo(todo: Todo):Promise<any> {
     const todoRef = collection(this.firestore, 'todos');
     return addDoc(todoRef, todo);
   }
@@ -73,6 +76,7 @@ export class TodoService {
     const listRef = collection(this.firestore, 'Lists');
     return addDoc(listRef, list);
   }
+  //también podríamos gestionarlo con promesas
   getTodos(): Observable<Todo[]> {
     const todoRef = collection(this.firestore, 'todos');
     return collectionData(todoRef, { idField: 'id' }) as Observable<Todo[]>;
@@ -93,4 +97,5 @@ export class TodoService {
     const todoDocRef = doc(this.firestore, `todos/${pId}`);
     return updateDoc(todoDocRef, { favourite: favourite });
   }
+  
 }

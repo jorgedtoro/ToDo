@@ -33,7 +33,7 @@
               [ngClass]="{ 'fa-solid': fillactive, 'fa-regular': !fillactive }"
               class="fa-regular fa-star"
               id="{{ todo.id }}"
-              (click)="addTodoFavourite($event)"
+              (click)="onClick(todo.id)"
             ></i>
             <i
               class="fa-solid fa-trash"

@@ -16,6 +16,8 @@ export class MydayComponent implements OnInit {
   arrLists: List[] = [];
   modalList: boolean = false;
   fillactive: boolean = false;
+  iconClass= new Map<string, boolean>();
+
   // status: boolean = false;
 
   constructor(private todoService: TodoService, private router: Router) {
@@ -34,6 +36,15 @@ export class MydayComponent implements OnInit {
       this.arrLists = lists;
       // console.log(this.arrLists);
     });
+    for (let i = 0; i < this.arrTodos.length; ++i) {
+      
+        // this.iconClass.set(this.arrTodos[i].id, false);
+      
+  }
+  }
+
+  onClick(id: any) {
+    this.iconClass.set(id, !this.iconClass.get(id));
   }
   async logOut() {
     const response = await this.todoService.logOut();
