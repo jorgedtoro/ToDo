@@ -1,13 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  Auth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from '@angular/fire/auth';
-import {
   Firestore,
   collection,
   addDoc,
@@ -16,10 +8,10 @@ import {
   doc,
   updateDoc,
 } from '@angular/fire/firestore';
-import { Storage, ref, getDownloadURL, listAll } from '@angular/fire/storage';
+//import { Storage, ref, getDownloadURL, listAll } from '@angular/fire/storage';
 import { Todo } from '../interfaces/todo.interface';
 import { Observable } from 'rxjs';
-import { List } from '../interfaces/list.interface';
+
 
 @Injectable({
   providedIn: 'root',
@@ -30,24 +22,37 @@ export class TodoService {
   listTitle:string='';
   
   constructor(
-    private auth: Auth,
-    private storage: Storage,
+    
+    //private storage: Storage,
     private firestore: Firestore
   ) {}
 
-  //auth register login and logout
-  register({ email, password }: any) {
-    return createUserWithEmailAndPassword(this.auth, email, password);
+  //CRUD ToDo firestore
+  addTodo(todo: Todo):Promise<any> {
+    const todoRef = collection(this.firestore, 'todos');
+    return addDoc(todoRef, todo);
   }
-  login({ email, password }: any) {
-    return signInWithEmailAndPassword(this.auth, email, password);
+  
+  //también podríamos gestionarlo con promesas
+  getTodos(): Observable<Todo[]> {
+    const todoRef = collection(this.firestore, 'todos');
+    return collectionData(todoRef, { idField: 'id' }) as Observable<Todo[]>;
   }
-  loginWithGoogle() {
-    return signInWithPopup(this.auth, new GoogleAuthProvider());
+  
+  deleteTodo(pId: string) {
+    const todoDocRef = doc(this.firestore, `todos/${pId}`);
+    return deleteDoc(todoDocRef);
   }
-  logOut() {
-    return signOut(this.auth);
+  
+  updateTodo(pId: string, favourite: boolean) {
+    const todoDocRef = doc(this.firestore, `todos/${pId}`);
+    return updateDoc(todoDocRef, { favourite: favourite });
   }
+  
+ 
+}
+
+
   //storage
   // async getImages() {
   //   const imagesRef = ref(this.storage, 'images');
@@ -66,36 +71,3 @@ export class TodoService {
 
   //   return this.images;
   // }
-
-  //CRUD todo and List firestore
-  addTodo(todo: Todo):Promise<any> {
-    const todoRef = collection(this.firestore, 'todos');
-    return addDoc(todoRef, todo);
-  }
-  addList(list: List) {
-    const listRef = collection(this.firestore, 'Lists');
-    return addDoc(listRef, list);
-  }
-  //también podríamos gestionarlo con promesas
-  getTodos(): Observable<Todo[]> {
-    const todoRef = collection(this.firestore, 'todos');
-    return collectionData(todoRef, { idField: 'id' }) as Observable<Todo[]>;
-  }
-  getLists(): Observable<List[]> {
-    const listRef = collection(this.firestore, 'Lists');
-    return collectionData(listRef, { idField: 'id' }) as Observable<List[]>;
-  }
-  deleteTodo(pId: string) {
-    const todoDocRef = doc(this.firestore, `todos/${pId}`);
-    return deleteDoc(todoDocRef);
-  }
-  deleteList(pId: string) {
-    const listDocRef = doc(this.firestore, `Lists/${pId}`);
-    return deleteDoc(listDocRef);
-  }
-  updateTodo(pId: string, favourite: boolean) {
-    const todoDocRef = doc(this.firestore, `todos/${pId}`);
-    return updateDoc(todoDocRef, { favourite: favourite });
-  }
-  
-}

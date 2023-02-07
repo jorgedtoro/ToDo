@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { List } from 'src/app/interfaces/list.interface';
 import { Todo } from 'src/app/interfaces/todo.interface';
+import { AuthorizationsService } from 'src/app/services/authorizations.service';
+import { ListsService } from 'src/app/services/lists.service';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -20,7 +22,13 @@ export class MydayComponent implements OnInit {
 
   // status: boolean = false;
 
-  constructor(private todoService: TodoService, private router: Router) {
+  constructor(
+    private todoService: TodoService,
+    private authService:AuthorizationsService,
+    private listsService:ListsService,
+    private router: Router
+    
+    ) {
     this.formTodo = new FormGroup({
       title: new FormControl(),
       category: new FormControl(),
@@ -32,22 +40,22 @@ export class MydayComponent implements OnInit {
       this.arrTodos = todos;
       // console.log(this.arrTodos);
     });
-    this.todoService.getLists().subscribe((lists) => {
+    this.listsService.getLists().subscribe((lists) => {
       this.arrLists = lists;
       // console.log(this.arrLists);
     });
-    for (let i = 0; i < this.arrTodos.length; ++i) {
-      
-        // this.iconClass.set(this.arrTodos[i].id, false);
-      
-  }
+      //   for (let i = 0; i < this.arrTodos.length; ++i) {
+          
+      //       // this.iconClass.set(this.arrTodos[i].id, false);
+          
+      // }
   }
 
   onClick(id: any) {
-    this.iconClass.set(id, !this.iconClass.get(id));
+  //   this.iconClass.set(id, !this.iconClass.get(id));
   }
   async logOut() {
-    const response = await this.todoService.logOut();
+    const response = await this.authService.logOut();
     this.router.navigate(['/home']);
   }
 
@@ -107,9 +115,16 @@ export class MydayComponent implements OnInit {
 
   async getLists() {
     try {
-      const response = this.todoService.getLists();
+      const response = this.listsService.getLists();
     } catch (error) {
       console.log(error);
     }
+  }
+
+  filterByCategory(){
+    this.arrTodos.filter((todo)=>{
+      todo.category == this.todoService.listTitle;
+    });
+    
   }
 }

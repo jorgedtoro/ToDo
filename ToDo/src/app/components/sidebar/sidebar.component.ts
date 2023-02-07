@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { List } from 'src/app/interfaces/list.interface';
 import { Todo } from 'src/app/interfaces/todo.interface';
+import { ListsService } from 'src/app/services/lists.service';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -20,16 +21,19 @@ export class SidebarComponent implements OnInit {
   right: number = 0;
   arrTodos:Todo[]=[];
 
-  constructor(private todoService: TodoService) {}
+  constructor(
+    private todoService: TodoService,
+    private listsService:ListsService
+    ) {}
 
   ngOnInit(): void {
-    this.todoService.getLists().subscribe((lists) => {
+    this.listsService.getLists().subscribe((lists) => {
       this.arrList = lists;
       // console.log(this.arrList);
     });
     this.todoService.getTodos().subscribe(todos =>{
       this.arrTodos=todos;
-      console.log(this.arrTodos)
+      // console.log(this.arrTodos)
     })
     
   }
@@ -42,7 +46,7 @@ export class SidebarComponent implements OnInit {
     this.listTitle = title;
     // console.log(this.listTitle);
     try {
-      const response = await this.todoService.addList({
+      const response = await this.listsService.addList({
         title: this.listTitle,
       });
       this.listTitle = '';
@@ -52,7 +56,7 @@ export class SidebarComponent implements OnInit {
   }
   async getLists() {
     try {
-      const response = this.todoService.getLists();
+      const response = this.listsService.getLists();
     } catch (error) {
       console.log(error);
     }
@@ -60,7 +64,7 @@ export class SidebarComponent implements OnInit {
   deleteList(event: any) {
     try {
       const id = event.target.id;
-      this.todoService.deleteList(id);
+      this.listsService.deleteList(id);
     } catch (error) {
       console.log(error);
     }
@@ -82,5 +86,8 @@ export class SidebarComponent implements OnInit {
 
     event?.preventDefault();
     this.modalList = !this.modalList;
+  }
+  addCategory(title:string){
+    this.listTitleEmit = title;
   }
 }

@@ -15,6 +15,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { TodoService } from './services/todo.service';
+import { ListviewComponent } from './components/listview/listview.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
     MydayComponent,
     RegisterComponent,
     LoginComponent,
+    ListviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
     provideStorage(() => getStorage()),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [TodoService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
