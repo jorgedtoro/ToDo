@@ -1,28 +1,35 @@
 <div class="container">
 
-    <app-sidebar></app-sidebar>
-    <div class="container-rightColumn">
+  <app-sidebar>
+
+  </app-sidebar>
+
+    
+  <div class="container-rightColumn">
         <h1 class="container-rightColumn">
-            Nombre de la lista
+            {{category}}
         </h1>
         <div class="todos-wrapper">
-            <article class="todos-wrapper-todo">
-                <div class="task-wrapper-input">
-            <i class="fa-regular fa-circle-check"></i>
-          </div>
-          <div class="task-wrapper-body">
-            <div class="task-wrapper-body-title>">
-              <p>todo.title </p>
+          <article class="todos-wrapper-todo" *ngFor="let todo of arrTodosCategory">
+            <div class="task-wrapper-input">
+              <i class="fa-regular fa-circle-check"></i>
             </div>
-            <div class="task-wrapper-body-info">
-              <p>todo.category</p>
-              <i class="fa-solid fa-circle fa-xs"></i>
-              <p>todo.list</p>
+            <div class="task-wrapper-body">
+              <div class="task-wrapper-body-title>">
+                <p>{{todo.title}} </p>
+              </div>
+              <div class="task-wrapper-body-info">
+                <p>{{todo.category}}</p>
+                <i class="fa-solid fa-circle fa-xs"></i>
+                <p>{{todo.list}}</p>
+              </div>
             </div>
+          </article>
         </div>
-            </article>
-        </div>
-    </div>
-
+  </div>
 
 </div>
+
+
+
+

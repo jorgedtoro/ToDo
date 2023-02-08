@@ -18,7 +18,7 @@ export class MydayComponent implements OnInit {
   arrLists: List[] = [];
   modalList: boolean = false;
   fillactive: boolean = false;
-  iconClass= new Map<string, boolean>();
+  iconClass= new Map<any, boolean>();
 
   // status: boolean = false;
 
@@ -44,15 +44,15 @@ export class MydayComponent implements OnInit {
       this.arrLists = lists;
       // console.log(this.arrLists);
     });
-      //   for (let i = 0; i < this.arrTodos.length; ++i) {
-          
-      //       // this.iconClass.set(this.arrTodos[i].id, false);
-          
-      // }
+      for (let i = 0; i < this.arrTodos.length; ++i) {
+        this.iconClass.set(this.arrTodos[i].id, false);
+      } 
   }
 
-  onClick(id: any) {
-  //   this.iconClass.set(id, !this.iconClass.get(id));
+  onClick(id: any, event:any) {
+    this.iconClass.set(id, !this.iconClass.get(id));
+    this.addTodoFavourite(event);
+    
   }
   async logOut() {
     const response = await this.authService.logOut();
@@ -83,19 +83,12 @@ export class MydayComponent implements OnInit {
       console.log(error);
     }
   }
+  //TODO: modificar el parámetro, recibir id y favourite
   async addTodoFavourite(event: any) {
     const pId = event.target.id;
     const favourite = true;
     console.log(event);
-    const fillStart = document.querySelector('.fa-star');
-    // fillStart?.classList.remove('fa-regular');
-    // fillStart?.classList.remove('fa-star');
-    // fillStart?.classList.add('fa-solid');
-    // fillStart?.classList.add('fa-star');
-
-    // window.location.reload();
-    console.log(fillStart);
-    this.fillactive = !this.fillactive;
+   
     try {
       const response = await this.todoService.updateTodo(pId, favourite);
       // console.log(response);

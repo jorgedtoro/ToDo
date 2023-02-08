@@ -13,6 +13,8 @@ export class ListviewComponent implements OnInit {
   arrTodos:Todo[]=[];
   category:string='';
 
+  arrTodosCategory: Todo[]=[];
+
   constructor(
     private filterService:FiltersService,
     private todoService:TodoService,
@@ -27,22 +29,22 @@ export class ListviewComponent implements OnInit {
     })
     await this.todoService.getTodos().subscribe(todos =>{
       this.arrTodos=todos;
+      this.filterTodosByCategory(this.category)
       
     })
-    debugger;
+    // debugger;
     console.log(this.category); 
-    this.filterTodosByCategory(this.category)
     
   }
 
   async filterTodosByCategory(category:string){
     console.log(category);
     console.log(this.arrTodos);
-    const arrTodosCategory = await this.arrTodos.filter((todo)=>{
+    this.arrTodosCategory = await this.arrTodos.filter((todo)=>{
       return todo.category == category;
     });
-    console.log(arrTodosCategory);
-    return arrTodosCategory;
+    console.log(this.arrTodosCategory);
+    return this.arrTodosCategory;
     
   }
 

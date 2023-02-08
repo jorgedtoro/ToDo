@@ -7,7 +7,7 @@
         <p>Friday, 27 January</p>
       </div>
       <div class="row-icons">
-        <button class="row-icons-btn btn" (click)="logOut()">Log Out</button>
+        <button class="row-icons-btn btn logOut" (click)="logOut()">Log Out</button>
         <i class="fa-regular fa-lightbulb"></i>
         <i class="fa-solid fa-ellipsis"></i>
       </div>
@@ -29,11 +29,14 @@
             </div>
           </div>
           <div class="task-wrapper-favourite">
+            <!--TODO: traer en la clase el todo.favourite para dejar la star marcada o no  -->
+            <!-- El favourite es un booleano, al asignarlo a la clase debería funcionar -->
+            <!-- [ngClass]="{ 'fa-solid': iconClass.get(todo.id), 'fa-regular': !iconClass.get(todo.id) }" -->
             <i
-              [ngClass]="{ 'fa-solid': fillactive, 'fa-regular': !fillactive }"
+              [ngClass]="{ 'fa-solid': todo.favourite, 'fa-regular': !todo.favourite }"
               class="fa-regular fa-star"
               id="{{ todo.id }}"
-              (click)="onClick(todo.id)"
+              (click)="onClick(todo.id, todo.favourite)"
             ></i>
             <i
               class="fa-solid fa-trash"
