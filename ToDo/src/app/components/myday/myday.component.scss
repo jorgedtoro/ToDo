@@ -3,8 +3,8 @@
 
 .container {
     display: flex;
+    background-color: $main-background;
 
-    // width: 100%;
     app-sidebar {
         flex-basis: 20%;
     }
@@ -73,8 +73,8 @@
                 display: flex;
                 align-items: center;
                 border-radius: 0.5rem;
-                background-color: $sidebar-background;
-                color: $white;
+                background-color: $white;
+                color: $greyFont;
                 padding: 0.4rem;
                 margin-bottom: 0.5rem;
 
@@ -96,7 +96,7 @@
                         gap: 1rem;
                         font-size: 0.9rem;
                         margin-top: 0.5rem;
-                        color: rgba($color: $white, $alpha: 0.5);
+                        color: rgba($color: $greyFont, $alpha: 0.5);
 
 
                     }
@@ -129,7 +129,7 @@
                 display: flex;
                 width: 100%;
                 gap: 1rem;
-                background-color: $sidebar-background;
+                background-color: #E1FAE3;
                 border-radius: 0.5rem;
                 padding: 0.75rem;
 
@@ -140,7 +140,7 @@
                         cursor: pointer;
 
                         i {
-                            color: $white;
+                            color: $greyFont;
                         }
 
                     }
@@ -150,17 +150,17 @@
                     font-family: $main-font;
                     border: none;
                     background-color: transparent;
-                    color: white;
+                    color: $greyFont;
                     outline: none;
 
                 }
 
                 &-input::placeholder {
-                    color: rgba($color: $white, $alpha: 0.5)
+                    color: rgba($color: $greyFont, $alpha: 0.8)
                 }
 
                 &-icons {
-                    color: $white;
+                    color: $greyFont;
                     display: flex;
                     gap: 2rem;
                     cursor: pointer,

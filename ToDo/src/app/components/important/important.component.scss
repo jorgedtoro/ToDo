@@ -1,0 +1,84 @@
+@import '../../../assets/styles/common/common_dir';
+
+
+.container {
+    display: flex;
+    background-color: $main-background;
+
+    app-sidebar {
+        flex-basis: 20%;
+    }
+
+    &-rightColumn {
+        padding: 1rem;
+        flex-basis: 80%;
+        font-family: $main-font;
+        margin: 0 2rem;
+
+        &-title {
+            margin-bottom: 1rem;
+        }
+
+        .todos-wrapper {
+            display: flex;
+            flex-direction: column;
+
+            &-todo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: 1rem;
+                background-color: $white;
+                border-radius: 1rem;
+                padding: 0.4rem;
+                gap: 1rem;
+                color: $greyFont;
+
+                .task-wrapper {
+
+                    &-input {
+                        flex-grow: 0;
+                        margin-left: 0.75rem;
+                        margin-right: 1rem;
+                    }
+
+                    &-body {
+                        flex-grow: 3;
+                        text-align: start;
+                        display: flex;
+                        flex-direction: column;
+
+                        &-info {
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                            font-size: 0.9rem;
+                            margin-top: 0.5rem;
+                            color: rgba($color: $greyFont, $alpha: 0.5);
+
+
+                        }
+
+                    }
+
+                    &-favourite {
+                        flex-grow: 0;
+                        margin-right: 0.75rem;
+
+                        i {
+                            margin-right: 1rem;
+                            cursor: pointer;
+
+                        }
+
+                        .fa-trash {
+                            color: black;
+                        }
+
+
+                    }
+                }
+            }
+        }
+    }
+}

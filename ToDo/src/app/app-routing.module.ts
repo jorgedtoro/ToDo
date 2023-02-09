@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { ListviewComponent } from './components/listview/listview.component';
+import { ImportantComponent } from './components/important/important.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,7 +18,8 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path:'listTodos/:nameList', component:ListviewComponent}
+  { path: 'listTodos/:nameList', component:ListviewComponent},
+  { path: 'important', component:ImportantComponent}
 ];
 
 @NgModule({

@@ -46,7 +46,7 @@ export class TodoService {
   
   updateTodo(pId: string, favourite: boolean) {
     const todoDocRef = doc(this.firestore, `todos/${pId}`);
-    return updateDoc(todoDocRef, { favourite: favourite });
+    return updateDoc(todoDocRef, { favourite: !favourite });
   }
   
  

@@ -4,7 +4,7 @@
     <div class="rows-wrapper-rowone">
       <div class="row-info">
         <h2>My Day</h2>
-        <p>Friday, 27 January</p>
+        <p>{{formatDate}}</p>
       </div>
       <div class="row-icons">
         <button class="row-icons-btn btn logOut" (click)="logOut()">Log Out</button>
@@ -29,14 +29,12 @@
             </div>
           </div>
           <div class="task-wrapper-favourite">
-            <!--TODO: traer en la clase el todo.favourite para dejar la star marcada o no  -->
-            <!-- El favourite es un booleano, al asignarlo a la clase debería funcionar -->
             <!-- [ngClass]="{ 'fa-solid': iconClass.get(todo.id), 'fa-regular': !iconClass.get(todo.id) }" -->
             <i
               [ngClass]="{ 'fa-solid': todo.favourite, 'fa-regular': !todo.favourite }"
-              class="fa-regular fa-star"
+              class="fa-star"
               id="{{ todo.id }}"
-              (click)="onClick(todo.id, todo.favourite)"
+              (click)="addTodoFavourite($event, todo.favourite)"
             ></i>
             <i
               class="fa-solid fa-trash"
@@ -70,6 +68,13 @@
             />
             <div class="add-task-icons">
               <i class="fa-solid fa-house"></i>
+              <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
               <i class="fa-solid fa-calendar"></i>
             </div>
           </form>

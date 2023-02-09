@@ -1,22 +1,23 @@
-
 @import '../../../assets/styles/common/common_dir';
 
-.sidebar{
+.sidebar {
     font-family: 'Source Sans Pro', sans-serif;
     background-color: $sidebar-background;
     padding: 1rem;
-    color:$white;
+    color: $white;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    &-menu-wrapper{
-    
-        .sidebar-user{
+
+    &-menu-wrapper {
+
+        .sidebar-user {
             display: flex;
             align-items: center;
             gap: 1rem;
             padding: 1rem;
+
             &-image {
                 img {
                     max-width: 100%;
@@ -24,7 +25,7 @@
                 }
             }
         }
-        
+
         .sidebar-search {
             display: flex;
             justify-content: space-between;
@@ -44,11 +45,13 @@
                 color: black,
             }
         }
+
         .sidebar-menu {
             display: flex;
             flex-direction: column;
             padding: 1rem;
             border-bottom: 1px solid $white;
+
             &-item {
                 display: flex;
                 align-items: center;
@@ -56,20 +59,21 @@
                 margin: 0.5rem 0;
                 padding: 0.5rem;
             }
-            &-item:hover{
+
+            &-item:hover {
                 background-color: $white;
-                color:$sidebar-background;
+                color: $sidebar-background;
                 border-radius: 0.5rem;
                 cursor: pointer;
 
             }
         }
-        
+
         .sidebar-lists {
             display: flex;
             flex-direction: column;
             padding: 1rem;
-            
+
             &-list {
                 display: flex;
                 align-items: center;
@@ -77,65 +81,74 @@
                 gap: 1rem;
                 margin: 1rem 0;
 
-                &-info{
+                &-info {
                     display: flex;
                     align-items: center;
-                    gap:1rem;
+                    gap: 1rem;
                 }
-                
-                &-trash{
+
+                &-trash {
                     cursor: pointer;
                 }
-                &-trash:hover{
-                    color:rgb(182, 8, 8);
+
+                &-trash:hover {
+                    color: rgb(182, 8, 8);
                 }
-                
+
 
             }
+
             &-list:hover {
                 background-color: $white;
                 border-radius: 0.5rem;
                 padding: 0.5rem;
-                color:$sidebar-background;
+                color: $sidebar-background;
+                cursor: pointer;
             }
 
-        }  
+        }
     }
+
     .sidebar-newList {
         display: flex;
         align-items: center;
         gap: 1rem;
         padding: 1rem;
         position: relative;
-        &-btn{
+
+        &-btn {
             border: none;
             background-color: transparent;
         }
-        &-input{
+
+        &-input {
             font-family: $main-font;
             border: none;
             background-color: transparent;
             color: white;
             outline: none;
         }
+
         &-input::placeholder {
             color: rgba($color: $white, $alpha: 0.5)
         }
     }
 
-    .modalList{
+    .modalList {
         display: none;
-        color:red;
+        color: red;
         background-color: $white;
         border-radius: 0.5rem;
         padding: 1rem;
         position: absolute;
+
         &-trash {
             display: flex;
             gap: 1rem,
         }
     }
-    .show{
+
+    .show {
         display: flex;
     }
 }

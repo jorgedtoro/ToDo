@@ -17,6 +17,12 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { TodoService } from './services/todo.service';
 import { ListviewComponent } from './components/listview/listview.component';
+import { ImportantComponent } from './components/important/important.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +33,7 @@ import { ListviewComponent } from './components/listview/listview.component';
     RegisterComponent,
     LoginComponent,
     ListviewComponent,
+    ImportantComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +44,10 @@ import { ListviewComponent } from './components/listview/listview.component';
     provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),
     provideFirestore(() => getFirestore()),
+    BrowserAnimationsModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatFormFieldModule
   ],
   providers: [TodoService],
   bootstrap: [AppComponent],

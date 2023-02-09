@@ -38,13 +38,18 @@ export class ListviewComponent implements OnInit {
   }
 
   async filterTodosByCategory(category:string){
-    console.log(category);
-    console.log(this.arrTodos);
-    this.arrTodosCategory = await this.arrTodos.filter((todo)=>{
+    // console.log(category);
+    // console.log(this.arrTodos);
+    try {
+      this.arrTodosCategory = await this.arrTodos.filter((todo)=>{
       return todo.category == category;
     });
-    console.log(this.arrTodosCategory);
+    // console.log(this.arrTodosCategory);
     return this.arrTodosCategory;
+    } catch (error) {
+      return console.log(error);
+    }
+    
     
   }
 
