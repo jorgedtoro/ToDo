@@ -65,9 +65,10 @@
               name="category"
               formControlName="category"
               placeholder="Add a category"
+              
             />
             <div class="add-task-icons">
-              <i class="fa-solid fa-house"></i>
+              <i class="fa-solid fa-house" (click)="showLists($event)"></i>
               <!-- <mat-form-field appearance="fill">
                 <mat-label>Choose a date</mat-label>
                 <input matInput [matDatepicker]="picker">
@@ -79,11 +80,16 @@
             </div>
           </form>
         </article>
-        <div class="modalList" [ngClass]="{ show: modalList }">
-          <p *ngFor="let list of arrLists" id="{{ list.id }}">
-            {{ list.title }}
-          </p>
-        </div>
+        
+          <div class="modalList" [ngClass]="{ show: modalList }"
+          [ngStyle]="{ left: xModalList + 'px', top: yModalList + 'px' }">
+            <p class="list-title" *ngFor="let list of arrLists" 
+              id="{{ list.id }}" (click)="addGroupList(list.title)">
+              {{ list.title }}
+            </p>
+          </div>
+
+        
       </div>
     </div>
   </div>

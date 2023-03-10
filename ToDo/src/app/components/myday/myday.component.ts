@@ -20,8 +20,11 @@ export class MydayComponent implements OnInit {
   arrTodos: Todo[] = [];
   arrLists: List[] = [];
   modalList: boolean = false;
+  listGroup:string ='Tareas';
   date = new Date();
   formatDate:string='';
+  xModalList:number=0;
+  yModalList:number=0;
   // iconClass= new Map<any, boolean>();
   
 
@@ -50,7 +53,7 @@ export class MydayComponent implements OnInit {
 
     this.date.toLocaleDateString();
     this.formateDate(this.date, 'dd/mm/yy');
-    console.log(this.formatDate);
+    // console.log(this.formatDate);
       // for (let i = 0; i < this.arrTodos.length; ++i) {
       //   this.iconClass.set(this.arrTodos[i].id, false);
       // } 
@@ -81,7 +84,7 @@ export class MydayComponent implements OnInit {
       category: this.formTodo.value.category,
       status: false,
       favourite: false,
-      list: 'Tareas',
+      list: this.listGroup,
     };
     try {
       const response = await this.todoService.addTodo(newTodo);
@@ -91,6 +94,12 @@ export class MydayComponent implements OnInit {
       console.log(error);
     }
   }
+
+  addGroupList(title:string){
+    this.listGroup = title;
+    this.modalList = false;
+  }
+
   async getAllTodos() {
     try {
       const response = await this.todoService.getTodos();
@@ -134,4 +143,11 @@ export class MydayComponent implements OnInit {
     });
     
   }
+  showLists(event:any){
+    console.log(event);
+    this.xModalList = event.pageX - 10;
+    this.yModalList = event.pageY - 320;
+    this.modalList = !this.modalList;
+  };
+
 }
